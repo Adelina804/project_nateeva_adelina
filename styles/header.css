@@ -1,0 +1,18 @@
+.header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    list-style: none;
+}
+.menu__link{
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #5a3923;
+    
+}
