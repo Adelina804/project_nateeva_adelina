@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(119, 22, 15);
+    color: aliceblue;
 }
 .menu{
     display: flex;
@@ -10,9 +12,12 @@
     list-style: none;
 }
 .menu__link{
+    display: block;
+    padding: 10pt;
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
     color: #5a3923;
+    background-color: rgba(238, 116, 30, 0.651);
     
 }
