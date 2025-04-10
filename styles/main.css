@@ -3,16 +3,97 @@
 }
 .welcome__image{
     margin: 0 auto;
+   
 }
-.famous__wrap{
+.famous__list{
     display: flex;
     justify-content: space-between;
+    gap: 10px;
+    
 }
-.paintings__wrap{
+.famous__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 350px;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background-color: navajowhite;
+    padding: 10px;
+
+}
+.famous__name{
+   font-size: 23px;
+   color: #5a3923;
+
+
+}
+.famous__image{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+
+}
+.paintings__list{
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
-.museum__wrap{
+.paintings__item{
     display: flex;
-    justify-content: space-between; 
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 350px;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background-color: navajowhite;
+    padding: 10px;
+}
+
+.paintings__name{
+    font-size: 23px;
+    color: #5a3923;
+}
+
+.paintings__image{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+
+}
+
+.museum__list{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.museum__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 350px;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background-color: navajowhite;
+    padding: 10px;
+}
+
+
+.museum__name{
+    font-size: 23px;
+    color: #5a3923;
+}
+
+
+.museum__image{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
 }

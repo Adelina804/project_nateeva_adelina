@@ -1,0 +1,307 @@
+$(window).load(function() {
+    if (window.navigator.userAgent.indexOf('Android') > -1) {
+        $('body').addClass('android');
+    } else {
+        $('body').addClass('ios');
+    }
+    var Phone = true;
+    if (window.innerWidth > 700) {
+        Phone = false;
+    }
+    if (!Phone) {
+        $('body').addClass('tablet');
+    }
+    $('*[contenteditable="true"]').removeAttr('contenteditable');
+
+    $(".images_gallery").each(function(i,e) {
+        if ($(e).parents('.sequence').length) {
+            var frames = [];
+            var w, h;
+            $(e).find('img').each(function(j,el) {
+                if (el.naturalWidth != 0) {
+                    w = el.naturalWidth;
+                    h = el.naturalHeight;
+                }
+                frames.push($(el).attr('src'));
+            });
+            $(e).html('');
+            var p_w = $(e).width();
+            $(e).spritespin({
+                width : p_w * 2,
+                height: ((h * p_w) / w) * 2,
+                frames: frames.length,
+                behavior: "drag", // "hold"
+                module: "360",
+                sense : 1,
+                source: frames,
+                animate : true,
+                loop: true,
+                frameWrap : true,
+                frameStep : 1,
+                frameTime : 500,
+                enableCanvas : false,
+                onLoad: function() {
+                    $(e).parents('.image').css('height', ((h * p_w) / w));
+                }
+            });
+        } else if($(e).parents('.rotate_3d').length) {
+            var slides = [];
+            var w, h;
+            $(e).find('img').each(function(j,el) {
+                if (el.naturalWidth != 0) {
+                    w = el.naturalWidth;
+                    h = el.naturalHeight;
+                }
+                slides.push({src: $(el).attr('src')});
+            });
+            var len = slides.length - 1;
+            if (slides.length < 5) {
+                slides.push({src: ''});
+                slides.push({src: ''});
+                slides.push({src: ''});
+            }
+            $(e).html('');
+            var p_w = $(e).width();
+            var carousel = $(e).jR3DCarousel({
+                width : p_w,
+                height: (h * p_w) / w,
+                animation: "slide3D",
+                slides: slides,
+                autoplay: false,
+                controls: true,
+                navigation: true,
+                swipe: false
+            });
+            $(e).parents('.rotate_3d').append('<div class="rotate_3d_change_side"></div>');
+            var nextSlide = 1;
+            $(e).on('click', function() {
+                carousel.showSlide(nextSlide);
+                if (nextSlide < len) nextSlide++;
+                else nextSlide = 0;
+            });
+        } else if ($(e).parents('.rotate_180').length) {
+            var slides = [];
+            var w, h;
+            $(e).find('img').each(function(j,el) {
+                if (el.naturalWidth != 0) {
+                    w = el.naturalWidth;
+                    h = el.naturalHeight;
+                }
+                slides.push({src: $(el).attr('src')});
+            });
+            $(e).html('');
+            var p_w = $(e).width();
+            var carousel = $(e).jR3DCarousel({
+                width : p_w,
+                height: (h * p_w) / w,
+                animation: "slide",
+                slides: slides,
+                autoplay: false,
+                controls: true,
+                navigation: true,
+                swipe: false
+            });
+            $(e).parents('.rotate_180').append('<div class="rotate_3d_change_side"></div>');
+            var nextSlide = 1;
+            $(e).on('click', function() {
+                carousel.showSlide(nextSlide);
+                if (nextSlide == 1) nextSlide = 0;
+                else nextSlide = 1;
+            });
+        } else if ($(e).parents('.comparing_block').length) {
+            var start = 50;
+            var dragBtn = '<div class="drag_button" style="left: ' + start + '%;"></div>';
+            $(e).find('img').each(function(j, img) {
+                if (j == 0) {
+                    $(img).on('load', function() {
+                        $(e).css('height', $(this).css('height') || this.height);
+                        var width = 'width: ' + start + '%;'
+                        var imgDiv = '<div class="drag_image_div" style="background-image: url(' + $(img).attr('src') + '); ' + width + '"></div>';
+                        $(e).prepend(imgDiv);
+                        $(img).parents('.gallery_image').remove();
+                        $(e).prepend(dragBtn);
+                    });
+                } else {
+                    $(img).on('load', function() {
+                        $(e).css('height', $(this).css('height') || this.height);
+                        var width = '';
+                        var imgDiv = '<div class="drag_image_div" style="background-image: url(' + $(img).attr('src') + '); ' + width + '"></div>';
+                        $(e).append(imgDiv);
+                        $(img).parents('.gallery_image').remove();
+                    });
+                }
+                if (img.complete) $(img).trigger('load');
+            });
+        } else {
+            var description = $(e).siblings('.image_desc').text();
+            initSimpleGallery(e, description);
+        }
+    });
+
+    $('.cite_block').each(function(i,e) {
+       if ($(e).find('.gallery_image.slide').length) {
+           $(e).find('.cite').addClass('with_image');
+       }
+    });
+
+    var Dragging, DragButton;
+    $('body').on('mousedown touchstart', '.drag_button', function() {
+        Dragging = true;
+        DragButton = this;
+        $('body').addClass('disable-select');
+    }).on('mouseup touchend', function() {
+        Dragging = false;
+        DragButton = null;
+        $('body').removeClass('disable-select');
+    }).on('mousemove touchmove', function(e) {
+        if (Dragging && DragButton) {
+            var $activeImg = $(DragButton).siblings('.drag_image_div').first();
+            var $dragBtn = $(DragButton);
+            var width = $dragBtn.parent().width();
+            var pageX = e.pageX || e.originalEvent.touches[0].pageX;
+            var offsetX = $activeImg.offset()['left'];
+            var delta = pageX - offsetX;
+            if (delta < 0) delta = 0;
+            if (delta > width) delta = width;
+            var currentWidth = delta/width * 100;
+            $activeImg.css('width', currentWidth + '%');
+            $(DragButton).css('left', currentWidth + '%');
+        }
+    }).on('click', '.fotorama__outer_nav_prev', function() {
+        var fotorama = $(this).parent().siblings('.fotorama').data('fotorama');
+        fotorama.show('<');
+    }).on('click', '.fotorama__outer_nav_next', function() {
+        var fotorama = $(this).parent().siblings('.fotorama').data('fotorama');
+        fotorama.show('>');
+    });
+
+    function initSimpleGallery(e, description) {
+        var w, h = 0, len;
+        $(e).find('img').each(function(j,el) {
+            if (el.naturalHeight > h) {
+                w = el.naturalWidth;
+                h = el.naturalHeight;
+            }
+        });
+        len = $(e).find('img').length;
+        var p_w = $(e).width();
+        $(e).on('fotorama:ready fotorama:showend', function(ev, fotorama, extra) {
+            if (description) $(e).siblings('.image_desc').text(description);
+            if ($(e).find('.gallery_image_wrapper').length) {
+                var settedSpan = $(fotorama.activeFrame.html).find('span.set');
+                var text = settedSpan.length ? settedSpan.text() : '';
+                if (text) $(e).siblings('.image_desc').text(text);
+                else if (!description)  $(e).siblings('.image_desc').text('');
+            }
+            $(e).siblings('.fotorama__outer_nav').find('.fotorama__outer_nav_index').find('span').text(fotorama.activeIndex + 1);
+        }).fotorama({
+            width : p_w,
+            height: (h * p_w) / w,
+            maxheight: Phone ? window.innerHeight * 0.8 : null,
+            nav: false,
+            loop: true,
+            arrows: false,
+            click: true,
+            swipe: true
+        }).after((len > 1) ? '<div class="fotorama__outer_nav">' +
+                '<div class="fotorama__outer_nav_prev"></div>' +
+                '<div class="fotorama__outer_nav_index"><span>1</span> / ' + len + '</div>' +
+                '<div class="fotorama__outer_nav_next"></div>' +
+            '</div>' : '');
+    }
+
+    $('.image_block').each(function(i,e) {
+        if ($(e).find('.gallery_image_wrapper').length && !$(e).find('.selector').hasClass('images_gallery')) {
+            var text = $(e).find('.image_desc').text();
+            if (!text) {
+                var settedSpan = $(e).find('span.set');
+                text = settedSpan.length ? settedSpan.text() : '';
+            }
+            $(e).find('.image_desc').text(text);
+        }
+    });
+
+    $('.cite').each(function(i,e) {
+        $(e).css('border-color', $(e).css('color'));
+        $(e).find('.editable_block').css('border-color', $(e).css('color'));
+    });
+    $('.youtube').each(function(i,e) {
+        var text = $(e).find('.editable_block').text();
+        var url;
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        if (text.indexOf('watch?v=') + 1) {
+            var paramsString = text.substr(text.indexOf('?'));
+            var videoID = getParameterByName('v', paramsString);
+            var listID = getParameterByName('list', paramsString);
+            if (listID != null) {
+                url = 'https://www.youtube.com/embed/videoseries?list=' + listID;
+            } else {
+                url = 'https://www.youtube.com/embed/' + videoID;
+            }
+        } else if (text.indexOf('https://youtu.be/') + 1) {
+            url = text.replace('https://youtu.be/', 'https://www.youtube.com/embed/');
+        }
+        $(e).html('<iframe src="' + url + '" frameborder="0" allowfullscreen></iframe>');
+    });
+    $('.button_link').each(function(i,e) {
+        var href = $(e).find('.button_link_href').text();
+        var text = $(e).find('.button_link_self').text();
+        $(e).append('<a class="button_with_link" target="_blank" href="' + href + '" rel="nofollow">' + text + '</a>');
+    });
+    $('.raw_code_block').each(function(i, e) {
+        var html = $(e).find('pre').text();
+        //console.log(html, e);
+        $(e).html(html);
+    });
+
+    $(window).on('scroll', function() {
+        var shows = $('.images_gallery');
+        var scroll = window.scrollY;
+        var offsetTop, elemHeight;
+        var screenHeight = window.innerHeight;
+        var button = $('#scroll_down_button');
+        shows.each(function(i,e) {
+            offsetTop = $(e).offset()['top'];
+            elemHeight = $(e).parent().height();
+            //console.log(scroll, offsetTop, elemHeight, screenHeight);
+            if (scroll >= offsetTop && scroll - offsetTop + elemHeight > screenHeight && (scroll + screenHeight) < (offsetTop + elemHeight + 100)) {
+                button.show();
+            } else {
+                button.hide();
+            }
+        });
+    });
+    $('#scroll_down_button').on('click', function() {
+        var scroll = window.scrollY;
+        var screenHeight = window.innerHeight;
+        window.scrollTo(0, scroll + screenHeight*0.8);
+    });
+
+    setTimeout(function() {
+        checkHash();
+        $('body').css('opacity', 1);
+    }, 100);
+    $(window).on('hashchange', function() {
+        checkHash();
+    });
+    function checkHash() {
+        if (window.location.hash && window.location.hash != '#') {
+            var id = window.location.hash.substr(1);
+            if (!isNaN(parseInt(id)) && !$('.no_navigation').length) {
+                var $elem = $('.block_wrapper[data-id="' + id + '"]');
+                if ($elem.length) {
+                    var offs = $elem.offset()['top'];
+                    $("html,body").animate({scrollTop: offs}, 300);
+                }
+            }
+        }
+    }
+});

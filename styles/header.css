@@ -2,8 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(119, 22, 15);
+    background-color: #5a3923;
     color: aliceblue;
+    border-radius: 20px;
+
 }
 .menu{
     display: flex;
@@ -18,6 +20,7 @@
     font-size: 24px;
     font-weight: bold;
     color: #5a3923;
-    background-color: rgba(238, 116, 30, 0.651);
+    background-color:navajowhite;
+    border-radius: 20px;
     
 }
