@@ -1,0 +1,13 @@
+@media only screen and (max-width:768px) {
+    .container {
+        max-width: 100%;
+       }
+       .famous__list, .paintings__list, .museum__list   {
+        flex-wrap: wrap;
+        justify-content: center;
+       }
+       .paintings__title, .famous__title, .museum__title {
+        padding: 0 20px;
+        text-align: center;
+       }
+}
