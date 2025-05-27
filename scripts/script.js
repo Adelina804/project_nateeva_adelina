@@ -1,4 +1,3 @@
-'use strict'
 document.addEventListener("DOMContentLoaded", () => {
     // * 1. Начало
     // * 2. Получаем все элементы изображений с описанием
@@ -15,9 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log('Скрипт отработал корректно')
 
-const intensiveImg = document.querySelector(".famous__image");
-intensiveImg.addEventListener('mouseenter', () => {
-            console.log('Мышка наведена на изображение, показываем текст');
-});
+    const intensiveImg = document.querySelectorAll(".famous__item");
+    const dataTitlefamous= [
+      "Виктор Михайлович Васнецов",
+      "Иван Иванович Шишкин",
+      "Автор Неизвестен",
+    ];
 
+    if (intensiveImg) {
+      intensiveImg.forEach((item, i) => {
+        item.querySelector(".famous__name").textContent = dataTitlefamous[i];
+      });
+    }
 });
