@@ -8,29 +8,51 @@
     <title> Под рукой музеолога </title>
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
-</head>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Swiper demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+        <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    </head>
 
 <body>
-    <div class="container">
-        <header class="header">
-            <a href="#" class="header__title"> Под рукой музеолога</a> 
-            <nav class = "header__menu">
-                <ul class="header_list">
-                    <!--li class="header_item"><a href="#" class=" header_link">Главная</a> </li>
+    <div class="preloader">
+        <div class="loader">
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+        Миленькие, подождите, пожалуйста...
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <header class="header">
+                <div class="header__top">
+                    <a><img class="header__logo" src="images/f0f5dbc172f711eebca02aa0df1cd6e5_upscaled.jpg"
+                            alt="Логотип" width="100" height="100"></a>
+                    <a href="#" class="header__title">
+                        <h1 class="header__title">
+                            Под рукой музеолога
+                        </h1>
+                    </a>
+                    <a><img class="header__button"></a>
+                </div>
+                <nav class="header__menu">
+                    <ul class="menu">
+                        <!--li class="header_item"><a href="#" class=" header_link">Главная</a> </li>
                      <li class="header_item"><a href="#" class=" header_link">Словарик музеолога</a> </li>
                       <li class="header_item"><a href="#" class=" header_link">Полезные источники</a> </li>
                        <li class="header_item"><a href="#" class=" header_link">Музеи г.Чистополь</a></li> -->
-                </ul>
-            </nav>
-            <div class="header__top">
-                <a><img class="header__logo" src="images/f0f5dbc172f711eebca02aa0df1cd6e5_upscaled.jpg" alt="Логотип"
-                        width="100" height="100"></a>
-                <h1 class="header__title">
-                   Под рукой музеолога
-                </h1>
-                <a><img class="header__button"></a>
-            </div>
-            <nav class="header__menu">
+                    </ul>
+                </nav>
+                <!-- <nav class="header__menu">
                 <ul class="menu">
                     <li class="menu__item menu__item--active"><a class="menu__link" href="index.html">Главная</a></li>
                     <li class="menu__item"><a class="menu__link" href="#">Словарик музеолога</a></li>
@@ -39,100 +61,158 @@
                 </ul>
 
 
-            </nav>
-        </header>
+            </nav> -->
+            </header>
 
-        <main class="main">
-            <section class="welcome">
-                <h2 class="welcome__title">
-                    Доброго времени суток! 
-                </h2>
-                <img class="welcome__image" src="images/0b5bb3c0-e3d1-11eb-86b4-76f708a4bf3f.800x600.jpg" alt="">
-            </section>
-            <section class="famous">
-                <h2 class="famous__title ">Известные шедевры Третьяковской галереи. г. Москва</h2>
-                <div class="famous__list">
-                    <div class="famous__item">
-                        <h3 class="famous__name">Художник 1</h3>
-                        <p class="famous__painting">"Богатыри" 1898 г. </p>
-                        <img class="famous__image" src="images/bogatyri-vasnecov+.jpg" width="150" height="100" alt="Богатыри. В.М.Васнецов">
-                    <button class="famous__link" type="button">Подробнее</button>
-                    </div>
-                    <div class="famous__item">
-                        <h3 class="famous__name">Художник 2 </h3>
-                        <p class="famous__painting"> "Утро в сосновом лесу" 1889 г.</p>
-                        <img class="famous__image" src="images/utro-v-sosnovom-lesu-shishkin+.jpg" width="150" height="100"
-                            alt="Утро в сосновом лесу. И.И.Шишкин">
-                            <button class="famous__link" type="button">Подробнее</button>
-                    </div>
-                    <div class="famous__item">
-                        <h3 class="famous__name">Художник 3</h3>
-                        <p class="famous__painting">"Спас Нерукотворный. Прослвление Креста" Двусторонняя икона вт.пол.XII века</p>
-                        <img class="famous__image" src="images/00141.jpg"
-                            alt=' "Спас Нерукотворный. Прослвление Креста" Двусторонняя икона вт.пол.XII века'
-                            width="100" height="100" alt="Спас Неруковторный">
-                            <button class="famous__link" type="button">Подробнее</button>
-                    </div>
-                </div>
-            </section>
-            <section class="paintings">
-                <h2 class="paintings__title">Жемчужины Государственного Русского Музея. г.Санкт-Петербург </h2>
-                <div class=" paintings__list">
-
-                <div class= "paintings__item">
-                    <h3 class="paintings__name">Архип Иванович Куинджи</h3>
-                    <p class="paintings__painting" >"Лунная ночь на Днепре" 1880 г.</p>
-                    <img class="paintings__image" src="images/ku.jpg" width="150" height="100" alt="Лунная ночь на Днепре ">
-                <button class="famous__link" type="button">Подробнее</button>
-                </div>
-                <div class= "paintings__item" >
-                    <h3 class="paintings__name">Илья Ефимович Репин</h3>
-                    <p class="paintings__painting">"Бурлаки на Волге" 1880 г.</p>
-                    <img class="paintings__image" src= "images/2143_mainfoto_03.jpg" width="100" height="50" alt="Бурлаки на Волге. И.Е.Репин">
-                <button class="famous__link" type="button">Подробнее</button>
-                </div>
-                <div class= "paintings__item" >
-                    <h3 class="paintings__name">Николай Константинович Рерих</h3>
-                    <p class="paintings__painting">"Небесный бой" 1912 г.</p>
-                    <img class="paintings__image"  src="images/RoerihNK-018.jpg" width="150" height="100" alt="Небесный бой. Н.К.Рерих">
-                <button class="famous__link" type="button">Подробнее</button>
-                </div>
-                </div>
-
-            </section>
-            <section class="museum">
-                <h2 class="museum__title">Важные экспонаты Государственного исторического музея. г.Москва </h2>
-                <div class="museum__list">
-
-                <div class= "museum__item">
-                    <h3 class="museum__name">Портрет царя Алексея Михайловича</h3>
-                    <p class="museum__painting">конец 1670-х — начало 1680-х годов </p>
-                    <img class="museum__image" src="images/KMO_121006_04955_1_t218_095827.jpg" alt="конец 1670-х — начало 1680-х годов"
-                        width="150" height="100" alt=" Портрет царя Алексея Михайловича">
-                <button class="famous__link" type="button">Подробнее</button>
-                    </div>
-                <div class= "museum__item" >
-                    <h3 class="museum__name">Перо Александра II</h3>
-                    <p class="museum__painting">1861 г.</p>
-                    <img class="museum__image"src="images/KMO_121006_04959_1_t218_233628P.jpg" alt="1861 г." width="150" height="100"  alt=" Перо Александра II">
-                <button class="famous__link" type="button">Подробнее</button>
-                </div>
-                <div class= "museum__item">
-                    <h3 class="museum__name">Золотая чарка Петра I</h3>
-                    <p class="museum__painting">1709 г.</p>
-                    <img class="museum__image"src="images/KMO_121006_04952_1_t218_232942PP.jpg" alt="1709 г." width="150" height="100" alt="Золотая чарка Петра I">
-                <button class="famous__link" type="button">Подробнее</button>
-                </div>
-            </div>
+            <main class="main">
+                <section class="welcome">
+                    <h2 class="welcome__title">
+                        Доброго времени суток!
+                    </h2>
+                    <img class="welcome__image" src="images/0b5bb3c0-e3d1-11eb-86b4-76f708a4bf3f.800x600.jpg" alt="">
                 </section>
 
-            </section>
+                <section class="famous">
+                    <h2 class="famous__title ">Известные шедевры Третьяковской галереи. г. Москва</h2>
+                    <div class="swiper mySwiper">
+                        <div class="famous__list swiper-wrapper">
+                            <div class="famous__item swiper-slide">
+                                <h3 class="famous__name">Художник 1</h3>
+                                <p class="famous__painting">"Богатыри" 1898 г. </p>
+                                <img class="famous__image" src="images/bogatyri-vasnecov+.jpg" width="150" height="100"
+                                    alt="Богатыри. В.М.Васнецов">
+                                <button class="famous__link" type="button">Подробнее</button>
+                                <div class="intensive__description" hidden>
+                                Основная тема эпического полотна Виктора Васнецова – богатыри-воины, стоящие на
+                                защите
+                                рубежей родины. С 1871 года, когда был сделан первый карандашный эскиз картины,
+                                художник, по его словам, не переставал думать о произведении, считая его
+                                исполнение
+                                своим «творческим долгом, обязательством перед родным народом».
+                                </div>
+                            </div>
+                            <div class="famous__item swiper-slide">
+                                <h3 class="famous__name">Художник 2 </h3>
+                                <p class="famous__painting "> "Утро в сосновом лесу" 1889 г.</p>
+                                <img class="famous__image" src="images/utro-v-sosnovom-lesu-shishkin+.jpg" width="150"
+                                    height="100" alt="Утро в сосновом лесу. И.И.Шишкин">
+                                
+                                <button class="famous__link" type="button">Подробнее</button>
+                                <div class="intensive__description" hidden>
+                                Замысел, пожалуй, самого известного пейзажа Ивану Шишкину подсказал художник
+                                Константин
+                                Савицкий. Он же помог Шишкину с написанием самих медвежат: Шишкин, хотя и был
+                                «мастером
+                                леса» и безукоризненно разбирался в мельчайших деталях флоры, нечасто помещал на
+                                свои
+                                полотна животных.
+                            </div>
+                            </div>
+                            <div class="famous__item swiper-slide">
+                                <h3 class="famous__name">Художник 3</h3>
+                                <p class="famous__painting swiper-slide">"Спас Нерукотворный. Прослвление Креста"
+                                    Двусторонняя икона
+                                    вт.пол.XII века</p>
+                                <img class="famous__image" src="images/00141.jpg"
+                                    alt=' "Спас Нерукотворный. Прослвление Креста" Двусторонняя икона вт.пол.XII века'
+                                    width="100" height="100" alt="Спас Неруковторный">
+                               
+                                <button class="famous__link" type="button">Подробнее</button>
+                                 <div class="intensive__description" hidden> </div>
+                                В православной церкви образ Спаса Нерукотворного считается одним из наиболее
+                                известных и
+                                почитаемых. Спас на убрусе (на плате), Нерукотворный образ Иисуса Христа, Мандилион
+                                —
+                                эти названия относятся к первой иконе Спасителя, представляющей Его лик на ткани
+                                (убрусе) или чрепии (черепице).
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+        </div>
+        </section>
+
+
+        <section class="paintings">
+            <h2 class="paintings__title">Жемчужины Государственного Русского Музея. г.Санкт-Петербург
+            </h2>
+            <div class=" paintings__list">
+
+                <div class="paintings__item">
+                    <h3 class="paintings__name">Архип Иванович Куинджи</h3>
+                    <p class="paintings__painting">"Лунная ночь на Днепре" 1880 г.</p>
+                    <img class="paintings__image" src="images/ku.jpg" width="150" height="100"
+                        alt="Лунная ночь на Днепре ">
+                    <button class="famous__link" type="button">Подробнее</button>
+                </div>
+                <div class="paintings__item">
+                    <h3 class="paintings__name">Илья Ефимович Репин</h3>
+                    <p class="paintings__painting">"Бурлаки на Волге" 1880 г.</p>
+                    <img class="paintings__image" src="images/2143_mainfoto_03.jpg" width="100" height="50"
+                        alt="Бурлаки на Волге. И.Е.Репин">
+                    <button class="famous__link" type="button">Подробнее</button>
+                </div>
+                <div class="paintings__item">
+                    <h3 class="paintings__name">Николай Константинович Рерих</h3>
+                    <p class="paintings__painting">"Небесный бой" 1912 г.</p>
+                    <img class="paintings__image" src="images/RoerihNK-018.jpg" width="150" height="100"
+                        alt="Небесный бой. Н.К.Рерих">
+                    <button class="famous__link" type="button">Подробнее</button>
+                </div>
+            </div>
+
+        </section>
+        <section class="museum">
+            <h2 class="museum__title">Важные экспонаты Государственного исторического музея. г.Москва
+            </h2>
+            <div class="museum__list">
+
+                <div class="museum__item">
+                    <h3 class="museum__name">Портрет царя Алексея Михайловича</h3>
+                    <p class="museum__painting">конец 1670-х — начало 1680-х годов </p>
+                    <img class="museum__image" src="images/KMO_121006_04955_1_t218_095827.jpg"
+                        alt="конец 1670-х — начало 1680-х годов" width="150" height="100"
+                        alt=" Портрет царя Алексея Михайловича">
+                    <button class="famous__link" type="button">Подробнее</button>
+                </div>
+                <div class="museum__item">
+                    <h3 class="museum__name">Перо Александра II</h3>
+                    <p class="museum__painting">1861 г.</p>
+                    <img class="museum__image" src="images/KMO_121006_04959_1_t218_233628P.jpg" alt="1861 г."
+                        width="150" height="100" alt=" Перо Александра II">
+                    <button class="famous__link" type="button">Подробнее</button>
+                </div>
+                <div class="museum__item">
+                    <h3 class="museum__name">Золотая чарка Петра I</h3>
+                    <p class="museum__painting">1709 г.</p>
+                    <img class="museum__image" src="images/KMO_121006_04952_1_t218_232942PP.jpg" alt="1709 г."
+                        width="150" height="100" alt="Золотая чарка Петра I">
+                    <button class="famous__link" type="button">Подробнее</button>
+                </div>
+            </div>
+        </section>
+
+        </section>
+        <section class="images">
+            <h2 class="images_title"> Изображения</h2>
+            <ul class="images__list">
+                <!--Здесь будет создаваться код с использованием JSON.-->
+            </ul>
+        </section>
         </main>
         <footer class="footer">
-           <p class="footer__text"> Автор сайта: студентка группы МЗ-21 (Институт национальной культуры и межкультурной коммуникации ) Натеева Аделина</p> 
+            <p class="footer__text"> Автор сайта: студентка группы МЗ-21 (Институт национальной культуры и
+                межкультурной коммуникации ) Натеева Аделина</p>
         </footer>
 
+        <div class="popup" hidden>
+        </div>
+
     </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="scripts/script.js"></script>
 </body>
 

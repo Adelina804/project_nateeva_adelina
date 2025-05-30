@@ -1,0 +1,29 @@
+[
+    {
+        "imageUrl": [
+            "images/bogatyri-vasnecov+.jpg",
+            "images/utro-v-sosnovom-lesu-shishkin+.jpg",
+            "images/00141.jpg"
+        ],
+        "imageAlt": "Картины",
+        "imageWidth": 150
+    },
+    {
+        "imageUrl": [
+            "images/ku.jpg",
+            "images/2143_mainfoto_03.jpg",
+            "images/RoerihNK-018.jpg"
+        ],
+        "imageAlt": "Картины",
+        "imageWidth": 150
+    },
+    {
+        "imageUrl": [
+            "images/KMO_121006_04955_1_t218_095827.jpg",
+            "images/KMO_121006_04959_1_t218_233628P.jpg",
+            "images/KMO_121006_04952_1_t218_232942PP.jpg"
+        ],
+        "imageAlt": "Картины",
+        "imageWidth": 150
+    }
+]

@@ -211,7 +211,7 @@ overflow: hidden;/*если содержимое выходит за преде�
     .swiper-slide {
       text-align: center;
       font-size: 18px;
-      background: #444;
+      background: #FFDB8B;
       display: flex;
       justify-content: center;
       align-items: center;
