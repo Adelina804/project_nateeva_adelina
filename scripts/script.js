@@ -87,73 +87,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
   console.log('Навигацинное меню создано с помощью javascript!');
 
-  const cardsImages = document.querySelector(".images");
-  if (cardsImages) {
-    const cardListImages = cardsImages.querySelector(".images__list");
+  const cardsCon = document.querySelector(".dictionary");
+    if (cardsCon) {
+        const cardList = cardsCon.querySelector(".dictionary__list");
+ 
+        // Пример URL для получения данных с сервера
+        const apiUrl = "data.json";
 
-    // Пример URL для получения данных с сервера
-    const apiUrl = "images.json";
-
-    // Функция для создания карточки
-    const createCard = (imageUrl, imageAlt, imageWidth) => {
-      // Шаблонные строки и подстановки
-      const image = `
-            <li class="images__item">
-                <img class="images__picture" src="${imageUrl[0]}" alt="${imageAlt}" width="${imageWidth}">
-                <img class="images__picture" src="${imageUrl[1]}" alt="${imageAlt}" width="${imageWidth}" style="display: none;">
-            </li>
-        `;
-
-      return image;
-    };
-
-    // Загрузка данных с сервера
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((images) => {
-        console.log(images); // Данные
-        console.log(typeof images); // Тип полученных данных
-
-        images.forEach((item) => {
-          const cardElement = createCard(
-            item.imageUrl,
-            item.imageAlt,
-            item.imageWidth
-          );
-          cardListImages.insertAdjacentHTML("beforeend", cardElement);
-        });
-        //Объявляем переменную pictures и сохраняем в нее все изображения с классом images__picture 
-        const pictures = document.querySelectorAll(".images__picture");
-        if (pictures) {
-          // Пройдемся по каждому элементу массива pictures, с помощью цикла forEach. 
-          pictures.forEach((picture) => {
-            //добавляем обработчик события клика по изображению:
-            picture.addEventListener("click", () => {
-              // получаем родительский элемент текущего изображения
-              const parentItem = picture.parentElement;
-
-              // Получаем все изображения в родительском элементе, для того чтобы работать только с изображениями, которые находятся в одной карточке
-              const parentPictures =
-                parentItem.querySelectorAll(".images__picture");
-
-              // проходимся по всем изображениям, найденным в карточке
-              parentPictures.forEach((parentPictures) => {
-                //проверка условия если на текущее изображение не кликали, то оставляем это изображение видимым, иначе скрываем
-                if (parentPictures !== picture) {
-                  parentPictures.style.display = "block"; // Показываем другое изображение
-                } else {
-                  parentPictures.style.display = "none"; // Скрываем текущее изображение
-                }
-              });
+         // Функция для создания карточки
+        const createCard = (
+            
+            title,
+            description
+        ) => {
+            // Шаблонные строки и подстановки
+            const card = `
+                <li class="dictionary__item" href="#">
+                    <h3 class="dictionary__title">${title}</h3>
+                    <p class="dictionary__description">${description}</p>
+                </li>
+            `;
+            return card;
+        };
+        // Загрузка данных с сервера
+        fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data); // Данные
+                console.log(typeof data); // Тип полученных данных
+ 
+                data.forEach((item) => {
+                    const cardElement = createCard(
+                        
+                        item.title,
+                        item.description
+                    );
+                    cardList.insertAdjacentHTML("beforeend", cardElement);
+                    });
+            })
+            .catch((error) => {
+                console.error("Ошибка при загрузке данных:", error);
             });
-          });
+ 
 
-        }
+}
 
-      });
 
-  }
-
+ 
   const preloader = document.querySelector(".preloader");
   const content = document.querySelector(".content");
   if (preloader && content) {
